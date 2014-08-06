@@ -80,7 +80,7 @@ function updateRoute(route) {
 						routeId: route['CodigoLinha'],
 						lat: pos.py,
 						lng: pos.px,
-						ts: getMoment().set('hour', data.hr.split(':')[0]).set('minute', data.hr.split(':')[1]).set('second', 0).format()
+						ts: getMoment().format()
 					};
 					appendToCSV(fleet[pos.p]);
 				} else {
@@ -91,7 +91,7 @@ function updateRoute(route) {
 							routeId: route['CodigoLinha'],
 							lat: pos.py,
 							lng: pos.px,
-							ts: getMoment().set('hour', data.hr.split(':')[0]).set('minute', data.hr.split(':')[1]).set('second', 0).format()
+							ts: getMoment().format()
 						};
 						appendToCSV(fleet[pos.p]);
 					}
