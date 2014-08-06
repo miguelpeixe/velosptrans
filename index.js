@@ -26,7 +26,7 @@ function init() {
 
 			updateRoutes(routes);
 
-		}, 1000 * 60);
+		}, 1000 * 10);
 
 	});
 
