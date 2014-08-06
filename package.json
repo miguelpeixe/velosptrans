@@ -1,0 +1,18 @@
+{
+  "name": "velosptrans",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  	"postinstall": "mkdir -p data",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  	"underscore": "latest",
+  	"async": "latest",
+  	"moment": "latest",
+  	"sptrans.js": "git://github.com/codigo-urbano/sptrans.js.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
