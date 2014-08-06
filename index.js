@@ -4,6 +4,8 @@ var sptrans = require('sptrans.js'),
 	moment = require('moment'),
 	_ = require('underscore');
 
+require('moment-timezone');
+
 sptrans = sptrans({
 	api_key: '7ec6172b29856483524db5f1ff99a051fc6ec7041954990ac61d25e56b720570'
 });
@@ -20,7 +22,7 @@ function init() {
 
 		setInterval(function() {
 
-			if(now.add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0).isSame(moment().set('second', 0))) {
+			if(now.add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0).isSame(getMoment().set('second', 0))) {
 				setFile();
 			}
 
@@ -34,7 +36,7 @@ function init() {
 
 function setFile() {
 
-	now = moment();
+	now = getMoment();
 
 	if(fs.existsSync(filename)) {
 		fs.renameSync(filename, filename + getFileDateFormat(now));
@@ -47,6 +49,12 @@ function setFile() {
 
 function getFileDateFormat(m) {
 	return m.format('YYYY-MM-DD-HH-mm');
+}
+
+function getMoment() {
+
+	return moment().tz('America/Sao_Paulo');
+
 }
 
 function updateRoutes(routes) {
@@ -72,7 +80,7 @@ function updateRoute(route) {
 						routeId: route['CodigoLinha'],
 						lat: pos.py,
 						lng: pos.px,
-						ts: moment().set('hour', data.hr.split(':')[0]).set('minute', data.hr.split(':')[1]).set('second', 0).format()
+						ts: getMoment().set('hour', data.hr.split(':')[0]).set('minute', data.hr.split(':')[1]).set('second', 0).format()
 					};
 					appendToCSV(fleet[pos.p]);
 				} else {
@@ -83,7 +91,7 @@ function updateRoute(route) {
 							routeId: route['CodigoLinha'],
 							lat: pos.py,
 							lng: pos.px,
-							ts: moment().set('hour', data.hr.split(':')[0]).set('minute', data.hr.split(':')[1]).set('second', 0).format()
+							ts: getMoment().set('hour', data.hr.split(':')[0]).set('minute', data.hr.split(':')[1]).set('second', 0).format()
 						};
 						appendToCSV(fleet[pos.p]);
 					}
