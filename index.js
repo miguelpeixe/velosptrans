@@ -20,7 +20,7 @@ function init() {
 
 		setInterval(function() {
 
-			if(now.add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0).is(moment().set('second', 0))) {
+			if(now.add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0).isSame(moment().set('second', 0))) {
 				setFile();
 			}
 
