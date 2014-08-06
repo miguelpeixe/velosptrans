@@ -55,8 +55,8 @@ function updateRoutes(routes) {
 	// 	updateRoute(route);
 	// });
 
-	// Update only first route, file gets too big
-	updateRoute(routes[0]);
+	// Update only LINHA 1333 PCA RAMOS DE AZEVEDO - MERCADO DA LAPA
+	updateRoute(_.find(routes, function(r) { return r['CodigoLinha'] == 1333; }));
 
 }
 
